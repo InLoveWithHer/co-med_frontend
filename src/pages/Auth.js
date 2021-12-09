@@ -4,6 +4,7 @@ import {NavLink, useHistory, useLocation} from "react-router-dom";
 import {Button, Card, Container, Form, Row} from "react-bootstrap";
 import {CABINET_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE} from "../utils/consts";
 import {Context} from "../index";
+import http from "../utils/http";
 
 
 const Auth = observer(() => {
@@ -17,6 +18,8 @@ const Auth = observer(() => {
 
     const click = async () => {
         try {
+            http.post('/sanctum/token', {email: phone, password: password});
+
             if (password === repeatedPassword) {
                 user.setIsAuth(true)
                 user.setUser(user)
