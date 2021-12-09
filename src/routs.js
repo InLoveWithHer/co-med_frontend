@@ -1,19 +1,33 @@
 import {
-    ADMIN_ROUTE, BLOG_ROUTE, BLOGS_ROUTE, CREATE_BLOG_ROUTE, CREATE_NEWS_ROUTE,
+    ADMIN_ROUTE,
+    BLOG_ROUTE,
+    BLOGS_ROUTE,
     HOME_ROUTE,
-    LOGIN_ROUTE, NEWS_ROUTE, ONE_NEWS_ROUTE, CABINET_ROUTE,
-    REGISTRATION_ROUTE
+    LOGIN_ROUTE,
+    NEWS_ROUTE,
+    ONE_NEWS_ROUTE,
+    CABINET_ROUTE,
+    REGISTRATION_ROUTE,
+    RECORD_DOCTOR_ROUTE,
+    FAMILY_DOCTOR_ROUTE,
+    OUTPATIENT_CARD_ROUTE,
+    VISIT_HISTORY_ROUTE,
+    MEDICAL_HISTORY_ROUTE, RECIPE_ROUTE,
 } from "./utils/consts";
 import Admin from "./pages/Admin";
 import Home from "./pages/Home";
 import Auth from "./pages/Auth";
 import OneBlogPage from "./pages/OneBlogPage";
 import BlogsPage from "./pages/BlogsPage";
-import CreateBlog from "./pages/CreateBlog";
-import CreateNews from "./pages/CreateNews";
 import NewsPage from "./pages/NewsPage";
 import OneNewsPage from "./pages/OneNewsPage";
 import Cabinet from "./pages/Cabinet";
+import RecordDoctor from "./pages/RecordDoctor"
+import FamilyDoctor from "./pages/FamilyDoctor";
+import OutpatientCard from "./pages/OutpatientCard";
+import VisitHistory from "./pages/VisitHistory";
+import MedicalHistory from "./pages/MedicalHistory";
+import RecipePage from "./pages/RecipePage";
 
 export const authRoutes = [
     {
@@ -21,16 +35,32 @@ export const authRoutes = [
         Component: Admin
     },
     {
-        path: CREATE_BLOG_ROUTE,
-        Component: CreateBlog
-    },
-    {
-        path: CREATE_NEWS_ROUTE,
-        Component: CreateNews
-    },
-    {
         path: CABINET_ROUTE,
         Component: Cabinet
+    },
+    {
+        path: RECORD_DOCTOR_ROUTE,
+        Component: RecordDoctor
+    },
+    {
+        path: FAMILY_DOCTOR_ROUTE,
+        Component: FamilyDoctor
+    },
+    {
+        path: OUTPATIENT_CARD_ROUTE,
+        Component: OutpatientCard
+    },
+    {
+        path: VISIT_HISTORY_ROUTE,
+        Component: VisitHistory
+    },
+    {
+        path: MEDICAL_HISTORY_ROUTE,
+        Component: MedicalHistory
+    },
+    {
+        path: RECIPE_ROUTE,
+        Component: RecipePage
     }
 ]
 

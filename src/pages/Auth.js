@@ -12,13 +12,13 @@ const Auth = observer(() => {
     const location = useLocation()
     const history = useHistory()
     const isLogin = location.pathname === LOGIN_ROUTE
-    const [phone, setPhone] = useState('')
+    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [repeatedPassword, setRepeatedPassword] = useState('')
 
-    const click = async () => {
+    const Registration = async () => {
         try {
-            http.post('/sanctum/token', {email: phone, password: password});
+            await http.post('/sanctum/register', {email: email, password: password});
 
             if (password === repeatedPassword) {
                 user.setIsAuth(true)
@@ -30,8 +30,16 @@ const Auth = observer(() => {
         } catch (e) {
             alert(e.response.data.message)
         }
-
-
+    }
+    const Login = async () => {
+        try {
+            await http.post('/sanctum/token', {email: email, password: password});
+                user.setIsAuth(true)
+                user.setUser(user)
+                history.push(CABINET_ROUTE)
+        } catch (e) {
+            alert(e.response.data.message)
+        }
     }
 
     return (
@@ -43,9 +51,9 @@ const Auth = observer(() => {
                 <Form className="d-flex flex-column">
                     <Form.Control
                         className="mt-3"
-                        placeholder="Введите ваш номер телефона..."
-                        value={phone}
-                        onChange={e => setPhone(e.target.value)}
+                        placeholder="Введите ваш Email..."
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
                     />
                     <Form.Control
                         className="mt-3"
@@ -79,8 +87,13 @@ const Auth = observer(() => {
                                 </div>
                             }
                         </Row>
-                        <Button className="align-self-end" variant={"outline-dark"}
-                                onClick={click}>{isLogin ? 'Войти' : 'Регистрация'}</Button>
+                        {isLogin ?
+                            <Button className="align-self-end" variant={"outline-dark"}
+                                    onClick={Login}>Войти</Button>
+                            :
+                            <Button className="align-self-end" variant={"outline-dark"}
+                                    onClick={Registration}>Регистрация</Button>
+                        }
                     </Container>
                 </Form>
             </Card>

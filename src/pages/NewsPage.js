@@ -1,10 +1,16 @@
 import React from 'react';
+import {Col, Container, Row} from "react-bootstrap";
+import NewsList from "../components/NewsList";
 
 const NewsPage = () => {
     return (
-        <div>
-            <h1>News Page</h1>
-        </div>
+        <Container>
+            <Row className="mt-2">
+                <Col md={9}>
+                    <NewsList/>
+                </Col>
+            </Row>
+        </Container>
     );
 };
 
