@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {useHistory} from "react-router-dom";
 import {Button, Card, Container, Image} from "react-bootstrap";
 import card from "../assets/cards.jpg";
 import {MEDICAL_HISTORY_ROUTE, RECIPE_ROUTE, VISIT_HISTORY_ROUTE} from "../utils/consts";
+import {Context} from "../index";
 
 const OutpatientCard = () => {
+    const {user} = useContext(Context)
     const history = useHistory()
     return (
         <Container>
@@ -15,7 +17,7 @@ const OutpatientCard = () => {
                 <div className="mt-4 d-flex justify-content-around">
                     <div>
                         <h5>ФИО:</h5>
-                        <h5>Номер телефона:</h5>
+                        <h5>Телефон:{user.user.phone}</h5>
                         <h5>Возраст:</h5>
                     </div>
                     <div>

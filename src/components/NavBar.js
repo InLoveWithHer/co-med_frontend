@@ -8,9 +8,9 @@ import jwt_decode from "jwt-decode";
 const NavBar = observer(() => {
     const {user} = useContext(Context)
     const history = useHistory()
-    let jwt = localStorage['token'];
-    let decode = jwt_decode(jwt);
-    let role = 'ADMIN'//decode['role']
+    // let jwt = localStorage['token'];
+    // let decode = jwt_decode(jwt);
+    // let role = 'ADMIN'//decode['role']
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -33,22 +33,19 @@ const NavBar = observer(() => {
                             <a className="nav-link active" href={NEWS_ROUTE}>Новости</a>
                         </li>
                     </ul>
-                    <form className="d-flex">
-                        {role !== 'USER' ?
+                    <form className="d-flex" onSubmit={e => e.preventDefault()}>
+                        {/*{role !== 'USER' ?*/}
                             <button className="btn btn-outline-primary me-2" style={{width: 250}} type="button"
                                     onClick={() => history.push(ADMIN_ROUTE)}>Админ панель</button>
-                            :
+                        {/*    :*/}
                             <p></p>
-                        }
+                        {/*}*/}
                         <input className="form-control me-2" type="search" placeholder="Поиск" aria-label="Search"/>
                         <button className="btn btn-outline-primary me-3 " type="submit">Поиск</button>
-                        {user.isAuth ?
-                            <button className="btn btn-outline-primary" type="button"
+                            <button className="btn btn-outline-primary" type="button" style={{display: user.isAuth ? "block" : "none"}}
                                     onClick={() => history.push(CABINET_ROUTE)}>Кабинет</button>
-                            :
-                            <button className="btn btn-outline-primary" type="button"
-                                    onClick={() => history.push(LOGIN_ROUTE)}>Войти</button>
-                        }
+                            <button className="btn btn-outline-primary" type="button" style={{display: user.isAuth ? "none" : "block"}}
+                                    onClick={() => history.push(LOGIN_ROUTE)}>Войти {user.isAuth}</button>
                     </form>
                 </div>
             </div>

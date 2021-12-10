@@ -12,7 +12,7 @@ import {
     FAMILY_DOCTOR_ROUTE,
     OUTPATIENT_CARD_ROUTE,
     VISIT_HISTORY_ROUTE,
-    MEDICAL_HISTORY_ROUTE, RECIPE_ROUTE,
+    MEDICAL_HISTORY_ROUTE, RECIPE_ROUTE, MANAGE_STAFF_ROUTE,
 } from "./utils/consts";
 import Admin from "./pages/Admin";
 import Home from "./pages/Home";
@@ -28,8 +28,41 @@ import OutpatientCard from "./pages/OutpatientCard";
 import VisitHistory from "./pages/VisitHistory";
 import MedicalHistory from "./pages/MedicalHistory";
 import RecipePage from "./pages/RecipePage";
+import ManageStaff from "./pages/ManageStaff";
 
 export const authRoutes = [
+
+]
+
+export const publicRoutes = [
+    {
+        path: HOME_ROUTE,
+        Component: Home
+    },
+    {
+        path: LOGIN_ROUTE,
+        Component: Auth
+    },
+    {
+        path: REGISTRATION_ROUTE,
+        Component: Auth
+    },
+    {
+        path: BLOG_ROUTE + '/:id',
+        Component: OneBlogPage
+    },
+    {
+        path: BLOGS_ROUTE,
+        Component: BlogsPage
+    },
+    {
+        path: NEWS_ROUTE,
+        Component: NewsPage
+    },
+    {
+        path: ONE_NEWS_ROUTE + '/:id',
+        Component: OneNewsPage
+    },
     {
         path: ADMIN_ROUTE,
         Component: Admin
@@ -61,36 +94,9 @@ export const authRoutes = [
     {
         path: RECIPE_ROUTE,
         Component: RecipePage
-    }
-]
-
-export const publicRoutes = [
-    {
-        path: HOME_ROUTE,
-        Component: Home
     },
     {
-        path: LOGIN_ROUTE,
-        Component: Auth
-    },
-    {
-        path: REGISTRATION_ROUTE,
-        Component: Auth
-    },
-    {
-        path: BLOG_ROUTE + '/:id',
-        Component: OneBlogPage
-    },
-    {
-        path: BLOGS_ROUTE,
-        Component: BlogsPage
-    },
-    {
-        path: NEWS_ROUTE,
-        Component: NewsPage
-    },
-    {
-        path: ONE_NEWS_ROUTE + '/:id',
-        Component: OneNewsPage
+        path: MANAGE_STAFF_ROUTE,
+        Component: ManageStaff
     }
 ]
